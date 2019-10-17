@@ -12,7 +12,11 @@ ui <- fluidPage(
         ),
 
         mainPanel(
-            textOutput("ls_output")
+            h2("output of `ls -lha`"),
+            textOutput("ls_output"),
+            br(),
+            h2("output of `umask`"),
+            textOutput("umask_output")
         )
     )
 )
@@ -32,6 +36,13 @@ server <- function(input, output) {
         tmp <- input$action
         tmp2 <- input$remove
         var <- system("ls -lha /tmp/file.csv", intern = TRUE)
+        var
+    })
+    
+    output$umask_output <- renderText({
+        tmp <- input$action
+        tmp2 <- input$remove
+        var <- system("umask", intern = TRUE)
         var
     })
 }
