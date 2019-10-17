@@ -1,0 +1,12 @@
+name: shiny-umask
+title: shiny-umask
+username: cole
+account: cole
+server: colorado.rstudio.com
+hostUrl: https://colorado.rstudio.com/rsc/__api__
+appId: 3006
+bundleId: 30264
+url: https://colorado.rstudio.com/rsc/content/3006/
+when: 1571255087.04534
+asMultiple: FALSE
+asStatic: FALSE
