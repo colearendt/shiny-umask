@@ -7,10 +7,12 @@ ui <- fluidPage(
     sidebarLayout(
         sidebarPanel(
             textInput('file_path', 'File Path:', value = "/tmp/file.csv"),
-            actionButton('action', 'Action')
+            actionButton('action', 'Action'),
+            actionButton('remove', 'Remove')
         ),
 
         mainPanel(
+            textOutput("ls_output")
         )
     )
 )
@@ -20,6 +22,17 @@ server <- function(input, output) {
 
     observeEvent(input$action, {
         write.csv(iris, input$file_path)
+    })
+    
+    observeEvent(input$remove, {
+        unlink("/tmp/file.csv")
+    })
+    
+    output$ls_output <- renderText({
+        tmp <- input$action
+        tmp2 <- input$remove
+        var <- system("ls -lha /tmp/file.csv", intern = TRUE)
+        var
     })
 }
 
